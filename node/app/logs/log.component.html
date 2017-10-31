@@ -1,0 +1,53 @@
+<div class='panel panel-default'>
+    <div class="searchField">
+        <input id='searchInput' (keyup)="_logSearch.searchAndFilterLogs()" type="text" placeholder="Search" />
+    </div>
+
+    <div class='panel-heading'>
+        <div class="col-md-1 col-sm-4 col-xs-12 dateContainer">
+            <input type="date" id="startDate" (change)="changeTableDates('START')" class="btn datePicker" required="required" />
+        </div>
+        <div class="col-md-1 col-sm-4 col-xs-12 dateContainer">
+            <input type="date" id="endDate" (change)="changeTableDates('END')" class="btn datePicker" required="required" />
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+    <div *ngIf='!logs|| logs.length==0'> 
+       <div class="spinner">
+       <div class="dot1"></div>
+       <div class="dot2"></div>
+       </div>
+    </div>
+    <div class='panel-body col-md-12 col-sm-12'>       
+        <div class='table-responsive'>
+            <table class='table table-hover' *ngIf='logs && logs.length'>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <!-- <th>Line</th> -->
+                        <th>Time</th>
+                        <th>Author</th>
+                        <th>Action</th>
+                        <!--<th>Module</th>-->
+                        <th>ItemID</th>
+                        <!--<th>Item Path</th>-->
+                        <th>Published</th>
+                    </tr>
+                </thead>
+                <tbody id="logData">
+                    <tr *ngFor='#log of logs | logFilter:listFilter' [style.background-color]="log.Action == 'DELETE' ? '#e60000' : null">
+                        <td>{{ log.Date}}</td>
+                        <!-- <td>{{ log.Line}}</td> -->
+                        <td>{{ log.Time}}</td>
+                        <td>{{ log.Author}}</td>
+                        <td>{{ log.Action}}</td>
+                        <!--<td>{{ log.Module}}</td>-->
+                        <td (click)="linkToSitecore(log.ItemID)" id="itemID">{{ log.ItemID}}</td>
+                        <!--<td>{{ log.ItemPath}}</td>-->
+                        <td>{{ log.Published}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
