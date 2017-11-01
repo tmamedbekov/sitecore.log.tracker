@@ -7,7 +7,7 @@ Sitecore Log Tracker
 ### You need to make sure you can access it at `http://localhost:8000/`
 ### When you access the Sitecore and go to Desktop you should see the the Log Tracker When you click on start button
 
-![Desktop](/images/desktp.PNG?raw=true "The way it looks in Start Menu")
+![Desktop](/images/desktop.PNG?raw=true "The way it looks in Start Menu")
 
 ## Configurations
 ### In order to change the path
