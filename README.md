@@ -10,7 +10,7 @@ When you access the Sitecore and go to Desktop you should see the the Log Tracke
 
 ![Desktop](/images/desktop.PNG?raw=true "The way it looks in Start Menu")
 
-# Configurations
+# Configurations for Node Application
 In order to change the path locate of your instance you need to edit `server.js` and update the line:
 
 `var LocalLink = 'C:/inetpub/wwwroot/sitecore/Data/logs/';` - this is where you specify your path to the Data folder.
@@ -21,3 +21,11 @@ This is my first extension for Sitecore and please let me know how I can improve
 
 Regards,
 Tony
+
+# Configurations for Sitecore Application
+
+If you wish to place the node application somewhere, else you need to change the path for the layout in Sitecore:
+
+core: /sitecore/layout/Layouts/Log Tracker/Log Tracker
+
+![Path](/images/path.PNG?raw=true "Change the path")
