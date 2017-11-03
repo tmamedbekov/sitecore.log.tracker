@@ -10,4 +10,8 @@ When you access the Sitecore and go to Desktop you should see the the Log Tracke
 ![Desktop](/images/desktop.PNG?raw=true "The way it looks in Start Menu")
 
 # Configurations
-In order to change the path
+In order to change the path locate of your instance you need to edit `server.js` and update the line:
+
+`var LocalLink = 'C:/inetpub/wwwroot/sitecore/Data/logs/';` - this is where you specify your path to the Data folder.
+
+Everything that is related to your instance and your log files, can be edited in the server.js file starting at line 73

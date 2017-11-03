@@ -9,7 +9,6 @@ var LocalLink = 'C:/inetpub/wwwroot/sitecore/Data/logs/';
 
 // start the log function
 
-
 app.get('/logJson', function (req, res) {
     var today = new Date();
     var dd = today.getDate();
@@ -18,8 +17,6 @@ app.get('/logJson', function (req, res) {
     if (dd < 10) { dd = '0' + dd }
     if (mm < 10) { mm = '0' + mm }
     todayDate = yyyy + '' + mm + '' + dd;
-
-
     /*************Environment Check Start************/
     var logsFolder = "";
     var env = req.query.env;
@@ -28,7 +25,7 @@ app.get('/logJson', function (req, res) {
     if (env == "DEV") { logsFolder = DevLink; }
     else if (env == "QA") { logsFolder = QALink; }
     else if (env == "UAT") { logsFolder = UATLink; }
-	else if (env == "LOCAL") { logsFolder = LocalLink; }
+    else if (env == "LOCAL") { logsFolder = LocalLink; }
     else { logsFolder = LocalLink; }
 
     //for local environment:
@@ -49,7 +46,7 @@ app.get('/logJson', function (req, res) {
             var fileDate = (fileNameArray[0] == "log") ? fileNameArray[1] : fileNameArray[2];
 
             if (fileDate <= req.query.endDate && fileDate >= req.query.startDate) {//check if date query matches files
-              
+
                 var logFileLines = fs.readFileSync(logsFolder + filename, 'ascii').toString().split("\n");
 
                 // go through the list of logFileLines
@@ -81,8 +78,10 @@ app.get('/logJson', function (req, res) {
             // var eee = /\/HOME\/.*?\//g;
             var eee = /\/HOME\/.*?,/g;
             var fff = /\/sitecore\/.*?,/g;
+            //Actions are edited below, you can add more actions if you like
             var ggg = /Login|Logout|Upload|Save item|Drag item|Rename item|Start editing|Attach|Set publishing targets|Set display name|Detach file|Create file|Recycle item|Add version|Recycle version|Save template|Set insert rules|Reset Masters field|Create standard values|Add from template|Create template|Duplicate item|Set layout details|Publishing|Publish/g;
             var hhh = /[a-zA-Z0-9-_.]+\.txt*/g;
+            //Was the item published to productoin?
             var pattern = /targets:PROD Site/g;
             var a, b, c, d, e, f, g, h;
             var a1, b1, d1;
@@ -95,9 +94,9 @@ app.get('/logJson', function (req, res) {
                     var year = fileNameArray[1].substring(0, 4);
                     var month = fileNameArray[1].substring(4, 6);
                     var day = fileNameArray[1].substring(6 , 8);
-                    
+
                     date = month + "/" + day + "/" + year;
-                    output = output + `\n"Date":"${date}",\n`;                    
+                    output = output + `\n"Date":"${date}",\n`;
                 });
             }
             else {
