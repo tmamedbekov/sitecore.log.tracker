@@ -1,5 +1,7 @@
 # Sitecore Log Tracker
-Beautiful UI, that runs on Node, to scan the data folder and show you all the logs in a beautiful formatted way.
+User-Friendly UI, that runs on Node, to scan the data folder and show you all the logs in a beautiful formatted way.
+
+![Path](/images/log-view-content.PNG?raw=true "Log View Content")
 
 ## Install the Sitecore package
 You can find the zip file in the sitecore folder of this repository
